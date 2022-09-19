@@ -1,0 +1,24 @@
+{
+  "name": "@p-typewriter/vue",
+  "version": "0.0.1",
+  "description": "",
+  "author": "",
+  "license": "MIT",
+  "exports": {
+    ".": {
+      "require": "./dist/components.umd.cjs",
+      "import": "./dist/components.js"
+    },
+    "./dist/style.css": "./dist/style.css"
+  },
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^3.1.0",
+    "@vitejs/plugin-vue-jsx": "^2.0.1",
+    "unplugin-auto-import": "^0.11.2",
+    "unplugin-vue-macros": "^0.11.2"
+  }
+}
