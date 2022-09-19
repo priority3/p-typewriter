@@ -12,9 +12,9 @@
     "skipDefaultLibCheck": true,
     "skipLibCheck": true,
     "jsx": "preserve",
-    "types": ["vite/client"],
+    "types": ["vite/client", "node", "unplugin-vue-define-options/macros-global"],
     "paths": {
-
+      "@p-typewriter/vue": ["./packages/vue/index.ts"]
     }
   },
   "exclude": [
