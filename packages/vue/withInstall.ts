@@ -1,4 +1,5 @@
-import type { SFCWithInstall } from '../type'
+import type { SFCWithInstall } from './type'
+import Writer from './src/index.vue'
 
 export const withInstall = <T, E extends Record<string, any>>(
   main: T,
@@ -16,3 +17,5 @@ export const withInstall = <T, E extends Record<string, any>>(
 
   return main as SFCWithInstall<T> & E
 }
+
+export const PWriter = withInstall(Writer)

@@ -1,7 +1,8 @@
-import Writer from './src/index.vue'
-import { withInstall } from './utils/withInstall'
-import install from './install'
+import 'uno.css'
 
-export const PWriter = withInstall(Writer)
+import installer from './defaults'
+import { PWriter } from './withInstall'
+export * from './reslover'
 
-export default install
+export default installer
+export { PWriter }

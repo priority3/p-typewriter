@@ -3,7 +3,8 @@ import Vue from '@vitejs/plugin-vue'
 import { defineConfig } from 'vite'
 import UnoCSS from 'unocss/vite'
 import AutoImport from 'unplugin-auto-import/vite'
-import VueMacros from 'unplugin-vue-macros/vite'
+import DefineOptions from 'unplugin-vue-define-options/vite'
+import VueJsx from '@vitejs/plugin-vue-jsx'
 // https://vitejs.dev/config/
 export default defineConfig({
   build: {
@@ -21,12 +22,9 @@ export default defineConfig({
     },
   },
   plugins: [
-    VueMacros({
-      plugins: {
-        vue: Vue(),
-        vueJsx: VueJsx(), // if needed
-      },
-    }),
+    Vue(),
+    VueJsx(),
+    DefineOptions(),
     UnoCSS(),
     AutoImport({
       imports: ['vue'],
@@ -34,7 +32,4 @@ export default defineConfig({
     }),
   ],
 })
-function VueJsx(): any {
-  throw new Error('Function not implemented.')
-}
 
