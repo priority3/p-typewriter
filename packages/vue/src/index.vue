@@ -2,17 +2,17 @@
 import type { Ref } from 'vue'
 import { writerProps } from './props'
 const props = defineProps(writerProps)
+const el = ref<HTMLElement>()
+
+// @ts-expect-error defined in tsconfig ???
 defineOptions({
   name: 'PWriter',
   inheritAttrs: false,
 })
-const slots = useSlots()
-const text: Ref<String | undefined> = computed(() => {
-  if (slots.default)
-    return slots.default()[0].children as String
-})
+const text = ref<string | undefined>('')
 const textLength = computed(() => text.value?.length ?? 0)
-const curInd = ref(1)
+
+const curInd = ref(0)
 let timer
 function startWriter() {
   timer = setInterval(() => {
@@ -20,10 +20,13 @@ function startWriter() {
       curInd.value += 2
     else
       curInd.value++
+    el.value!.children[0].innerHTML = text.value?.substring(0, curInd.value) ?? ''
   }, 200)
 }
+
 onMounted(() => {
   startWriter()
+  text.value = el.value?.children[0].innerHTML
 })
 onUnmounted(() => {
   clearInterval(timer)
@@ -35,10 +38,11 @@ watch(curInd, () => {
 
 <template>
   <div
-    text="2em #fff" bg-dark p-1em class="typewriter-container"
-    :class="curInd < textLength && 'isActive'" w-70
+    ref="el" text="2em #fff" bg-dark p-1em w-80 flex justify-center items-center
+    class="typewriter-container"
+    :class="curInd < textLength && 'isActive'"
   >
-    {{ text?.substring(0, curInd) }}
+    <slot />
   </div>
 </template>
 

@@ -13,7 +13,7 @@
       </a>
     </div>
     <PWriter>
-      <span>this is my writer</span>
+      <span text="#2ecc71">this is priority</span>
     </PWriter>
   </div>
 </template>
