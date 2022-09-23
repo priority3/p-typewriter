@@ -10,7 +10,7 @@
 ## Install
 
 ```bash
-ni @p-typewriter/vue
+ni p-typewriter-vue
 ```
 
 ## Usage
