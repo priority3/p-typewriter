@@ -9,7 +9,7 @@
     "vue3"
   ],
   "scripts": {
-    "start": "pnpm run stub",
+    "dev": "pnpm run stub",
     "stub": "pnpm -r --parallel run stub",
     "build": "rimraf packages/*/dist && pnpm -r -F !play --parallel run build",
     "play": "pnpm -C play run dev",
@@ -20,6 +20,7 @@
   "devDependencies": {
     "@pity/eslint-config": "^0.1.9",
     "@types/node": "^18.7.18",
+    "@unocss/reset": "^0.45.22",
     "@vitejs/plugin-vue": "^3.1.0",
     "@vitejs/plugin-vue-jsx": "^2.0.1",
     "eslint": "^8.23.1",
