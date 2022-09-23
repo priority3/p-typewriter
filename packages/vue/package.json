@@ -1,7 +1,7 @@
 {
   "name": "@p-typewriter/vue",
   "type": "module",
-  "version": "0.0.1",
+  "version": "1.0.1-beta.0",
   "description": "",
   "author": "priority",
   "license": "MIT",
@@ -24,11 +24,8 @@
   "peerDependencies": {
     "vue": "^3.2.0"
   },
-  "devDependencies": {
-
-  },
+  "devDependencies": {},
   "publishConfig": {
     "access": "public"
   }
-
 }

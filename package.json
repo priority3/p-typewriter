@@ -1,6 +1,6 @@
 {
   "name": "p-typewriter-monorepo",
-  "version": "1.0.0",
+  "version": "1.0.1-beta.0",
   "description": "A monorepo for p-typewriter",
   "author": "",
   "license": "MIT",
@@ -16,7 +16,8 @@
     "play:build": "pnpm -C play run build",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix --max-warnings 0",
-    "test": "vitest"
+    "test": "vitest",
+    "release": "bumpp package.json packages/*/package.json"
   },
   "devDependencies": {
     "@pity/eslint-config": "^0.1.9",
@@ -24,6 +25,7 @@
     "@unocss/reset": "^0.45.22",
     "@vitejs/plugin-vue": "^3.1.0",
     "@vitejs/plugin-vue-jsx": "^2.0.1",
+    "bumpp": "^8.2.1",
     "eslint": "^8.23.1",
     "rimraf": "^3.0.2",
     "simple-git-hooks": "^2.8.0",
