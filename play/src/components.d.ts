@@ -7,6 +7,6 @@ export {}
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
-    PWriter: typeof import('@p-typewriter/vue')['PWriter']
+    PWriter: typeof import('p-typewriter-vue')['PWriter']
   }
 }

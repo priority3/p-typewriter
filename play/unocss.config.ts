@@ -14,6 +14,6 @@ export default defineConfig({
   shortcuts: {
     fcc: 'flex flex-col justify-center items-center',
     btn: `cursor-pointer h-10 w-30 fcc mt-10 rounded-md text-[#3f3f3f] transition-all duration-300
-     hover:shadow-xl c-context border !focus:outline-none`,
+     hover:shadow-xl border !focus:outline-none`,
   },
 })

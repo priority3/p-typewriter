@@ -48,9 +48,9 @@ importers:
 
   play:
     specifiers:
-      '@p-typewriter/vue': workspace:*
+      p-typewriter-vue: workspace:*
     dependencies:
-      '@p-typewriter/vue': link:../packages/vue
+      p-typewriter-vue: link:../packages/vue
 
 packages:
 

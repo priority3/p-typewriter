@@ -9,7 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@p-typewriter/vue": "workspace:*"
+    "p-typewriter-vue": "workspace:*"
   }
 
 }
