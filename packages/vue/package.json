@@ -7,13 +7,13 @@
   "license": "MIT",
   "exports": {
     ".": {
-      "require": "./dist/vue.umd.cjs",
-      "import": "./dist/vue.js"
+      "require": "./dist/p-typewriter-vue.umd.cjs",
+      "import": "./dist/p-typewriter-vue.js"
     },
     "./dist/style.css": "./dist/style.css"
   },
-  "main": "./dist/vue.umd.cjs",
-  "module": "./dist/vue.js",
+  "main": "./dist/p-typewriter-vue.umd.cjs",
+  "module": "./dist/p-typewriter-vue.js",
   "files": [
     "dist"
   ],

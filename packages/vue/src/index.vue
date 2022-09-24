@@ -1,46 +1,85 @@
 <script setup lang="ts">
-import type { Ref } from 'vue'
-import { writerProps } from './props'
+import { writerEmits, writerProps } from './props'
 const props = defineProps(writerProps)
+const emits = defineEmits(writerEmits)
 const el = ref<HTMLElement>()
 
-// @ts-expect-error defined in tsconfig ???
 defineOptions({
   name: 'PWriter',
   inheritAttrs: false,
 })
+
 const text = ref<string | undefined>('')
 const textLength = computed(() => text.value?.length ?? 0)
 
 const curInd = ref(0)
+let step = 1
 let timer
 function startWriter() {
   timer = setInterval(() => {
-    if (text.value![curInd.value] === ' ')
-      curInd.value += 2
-    else
-      curInd.value++
-    el.value!.children[0].innerHTML = text.value?.substring(0, curInd.value) ?? ''
+    doCurIndNext()
+    el.value!.children[0].innerHTML = text.value?.substring(0, curInd.value) ?? ' '
   }, 200)
 }
 
+function doCurIndNext() {
+  if (text.value![curInd.value] === ' ') {
+    // 跳过空格空格
+    const nextStep = (step + (step > 0 ? 1 : 0))
+    curInd.value += nextStep
+  }
+  else { curInd.value += step }
+}
+
+function clearAndResetTimer() {
+  if (timer) {
+    clearInterval(timer)
+    curInd.value = 1
+    step = 1
+    emits('update:isStarter', false)
+  }
+}
+
 onMounted(() => {
-  startWriter()
   text.value = el.value?.children[0].innerHTML
+  el.value!.children[0].innerHTML = ' '
+  props.isStarter && startWriter()
 })
 onUnmounted(() => {
-  clearInterval(timer)
+  clearAndResetTimer()
 })
 watch(curInd, () => {
-  curInd.value > textLength.value && clearInterval(timer)
+  if (curInd.value >= textLength.value) {
+    if (props.reverse)
+      step = -1
+
+    else if (props.infinity)
+      curInd.value = 0
+
+    return
+  }
+  if (curInd.value < 0) {
+    if (!props.infinity) clearAndResetTimer()
+    else if (props.reverse)
+      step = 1
+
+    return
+  }
+  if (curInd.value >= textLength.value + 1 || curInd.value < 0)
+    clearAndResetTimer()
+})
+watch(() => props.isStarter, () => {
+  if (!props.isStarter) clearAndResetTimer()
+  else
+    startWriter()
 })
 </script>
 
 <template>
   <div
     ref="el" text="2em #fff" bg-dark p-1em w-80 flex justify-center items-center
-    class="typewriter-container"
-    :class="curInd < textLength && 'isActive'"
+    class="typewriter-container" h-20
+    :class="curInd > 0 && 'isActive'"
   >
     <slot />
   </div>
@@ -50,6 +89,7 @@ watch(curInd, () => {
 body{
   font-family: 'sans-serif';
 }
+
 .isActive.typewriter-container::after{
   content: "|";
   animation: blink .5s infinite;

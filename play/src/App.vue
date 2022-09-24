@@ -1,5 +1,7 @@
 <script setup lang="ts">
+import { ref } from 'vue'
 
+const isStarter = ref(true)
 </script>
 
 <template>
@@ -12,9 +14,18 @@
         <img src="./assets/vue.svg" class="logo vue" alt="Vue logo">
       </a>
     </div>
-    <PWriter>
+    <PWriter v-model:isStarter="isStarter" :delay="3000" :infinity="false" reverse>
       <span text="#2ecc71">this is priority</span>
     </PWriter>
+
+    <button
+      btn @click="isStarter = true"
+    >
+      restart
+    </button>
+    <span text-xs text="#ccc" mt-3>
+      当 <span text-base text="#81ecec">停止</span> 时，点击按钮重新开始！！！
+    </span>
   </div>
 </template>
 
