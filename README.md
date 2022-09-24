@@ -40,12 +40,12 @@ import { PWriter } from 'p-typewriter-vue'
 **or**
 ```ts 
 // you can auto import it , you do this in vite.config.ts
-import { FWriterResolver } from 'p-typewriter-vue'
+import { PWriterResolver } from 'p-typewriter-vue'
 export default defineConfig({
   plugins: [
     //* *
     Components({
-      resolvers: [FWriterResolver()/** , other... */],
+      resolvers: [PWriterResolver()/** , other... */],
       dts: 'src/components.d.ts',
     }),
   ],
